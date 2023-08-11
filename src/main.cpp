@@ -1,5 +1,12 @@
-// Copyright 2019-2020 The MathWorks, Inc.
-// Generated 28-Jul-2021 10:12:30
+//
+// File main.cpp
+//
+// Code generated for Simulink model 'setpointreader'.
+//
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:36 2023
+//
 
 #include <stdio.h>
 #include "rosnodeinterface.h"

@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 1.45
-// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Jul 28 10:12:27 2021
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -19,8 +19,6 @@
 #ifndef RTW_HEADER_setpointreader_types_h_
 #define RTW_HEADER_setpointreader_types_h_
 #include "rtwtypes.h"
-
-// Model Code Variants
 #ifndef DEFINED_TYPEDEF_FOR_SL_Bus_setpointreader_geometry_msgs_Vector3_
 #define DEFINED_TYPEDEF_FOR_SL_Bus_setpointreader_geometry_msgs_Vector3_
 

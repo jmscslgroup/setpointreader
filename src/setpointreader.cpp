@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 1.45
-// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Jul 28 10:12:27 2021
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -17,7 +17,8 @@
 // Validation result: Not run
 //
 #include "setpointreader.h"
-#include "setpointreader_private.h"
+#include "rtwtypes.h"
+#include "setpointreader_types.h"
 
 // Block signals (default storage)
 B_setpointreader_T setpointreader_B;
@@ -36,15 +37,14 @@ void setpointreader_step(void)
   boolean_T b_varargout_1;
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe1'
-  // MATLABSystem: '<S3>/SourceBlock' incorporates:
-  //   Inport: '<S4>/In1'
-
+  // MATLABSystem: '<S3>/SourceBlock'
   b_varargout_1 = Sub_setpointreader_31.getLatestMessage(&b_varargout_2);
 
   // Outputs for Enabled SubSystem: '<S3>/Enabled Subsystem' incorporates:
   //   EnablePort: '<S4>/Enable'
 
   if (b_varargout_1) {
+    // SignalConversion generated from: '<S4>/In1'
     setpointreader_B.In1 = b_varargout_2;
   }
 
@@ -71,7 +71,6 @@ void setpointreader_step(void)
 void setpointreader_initialize(void)
 {
   {
-    int32_T i;
     char_T b_zeroDelimTopic[8];
     char_T b_zeroDelimTopic_0[6];
     static const char_T tmp[7] = { 'm', 's', 'g', '_', '4', '6', '7' };
@@ -80,8 +79,8 @@ void setpointreader_initialize(void)
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe1'
     // SystemInitialize for Enabled SubSystem: '<S3>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S4>/Out1' incorporates:
-    //   Inport: '<S4>/In1'
+    // SystemInitialize for SignalConversion generated from: '<S4>/In1' incorporates:
+    //   Outport: '<S4>/Out1'
 
     setpointreader_B.In1 = setpointreader_P.Out1_Y0;
 
@@ -90,7 +89,7 @@ void setpointreader_initialize(void)
     // Start for MATLABSystem: '<S3>/SourceBlock'
     setpointreader_DW.obj_g.matlabCodegenIsDeleted = false;
     setpointreader_DW.obj_g.isInitialized = 1;
-    for (i = 0; i < 7; i++) {
+    for (int32_T i = 0; i < 7; i++) {
       b_zeroDelimTopic[i] = tmp[i];
     }
 
@@ -105,7 +104,7 @@ void setpointreader_initialize(void)
     // Start for MATLABSystem: '<S2>/SinkBlock'
     setpointreader_DW.obj.matlabCodegenIsDeleted = false;
     setpointreader_DW.obj.isInitialized = 1;
-    for (i = 0; i < 5; i++) {
+    for (int32_T i = 0; i < 5; i++) {
       b_zeroDelimTopic_0[i] = tmp_0[i];
     }
 

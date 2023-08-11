@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 1.45
-// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Jul 28 10:12:27 2021
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -18,12 +18,12 @@
 //
 #ifndef RTW_HEADER_setpointreader_h_
 #define RTW_HEADER_setpointreader_h_
-#include <stddef.h>
 #include "rtwtypes.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
 #include "slros_initialize.h"
 #include "setpointreader_types.h"
+#include <stddef.h>
 
 // Macros for accessing real-time model data structure
 #ifndef rtmGetErrorStatus
@@ -57,20 +57,21 @@ struct P_setpointreader_T_ {
   SL_Bus_setpointreader_geometry_msgs_Point Constant_Value_j;// Computed Parameter: Constant_Value_j
                                                                 //  Referenced by: '<S3>/Constant'
 
-  real_T Gain_Gain;                    // Expression: 0.27777
+  real_T Gain_Gain;                    // Expression: 1.0
                                           //  Referenced by: '<Root>/Gain'
 
 };
 
 // Real-time Model Data Structure
 struct tag_RTM_setpointreader_T {
-  const char_T *errorStatus;
+  const char_T * volatile errorStatus;
 };
 
 // Block parameters (default storage)
 #ifdef __cplusplus
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
@@ -79,12 +80,14 @@ extern "C" {
 #ifdef __cplusplus
 
 }
+
 #endif
 
 // Block signals (default storage)
 #ifdef __cplusplus
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
@@ -93,6 +96,7 @@ extern "C" {
 #ifdef __cplusplus
 
 }
+
 #endif
 
 // Block states (default storage)
@@ -100,7 +104,8 @@ extern struct DW_setpointreader_T setpointreader_DW;
 
 #ifdef __cplusplus
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
@@ -112,12 +117,14 @@ extern "C" {
 #ifdef __cplusplus
 
 }
+
 #endif
 
 // Real-time Model object
 #ifdef __cplusplus
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
@@ -126,7 +133,11 @@ extern "C" {
 #ifdef __cplusplus
 
 }
+
 #endif
+
+extern volatile boolean_T stopRequested;
+extern volatile boolean_T runModel;
 
 //-
 //  The generated code includes comments that allow you to trace directly

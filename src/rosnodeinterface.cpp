@@ -1,5 +1,12 @@
-// Copyright 2019-2021 The MathWorks, Inc.
-// Generated 28-Jul-2021 10:12:30
+//
+// File rosnodeinterface.cpp
+//
+// Code generated for Simulink model 'setpointreader'.
+//
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:36 2023
+//
 
 #ifdef _MSC_VER
 
@@ -118,8 +125,7 @@ namespace ros
     void NodeInterface::schedulerThread(void)
     {
       while (mRunModel) {
-        std::this_thread::sleep_until(std::chrono::system_clock::now() + std::
-          chrono::nanoseconds(20000000));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(20000000));
         mBaseRateSem.notify();
       }
     }

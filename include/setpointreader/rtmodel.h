@@ -3,23 +3,28 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: setpointreader_private.h
+// File: rtmodel.h
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 1.45
-// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Jul 28 10:12:27 2021
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
 // Code generation objectives: Unspecified
 // Validation result: Not run
 //
-#ifndef RTW_HEADER_setpointreader_private_h_
-#define RTW_HEADER_setpointreader_private_h_
-#include "rtwtypes.h"
-#endif                                 // RTW_HEADER_setpointreader_private_h_
+#ifndef RTW_HEADER_rtmodel_h_
+#define RTW_HEADER_rtmodel_h_
+#include "setpointreader.h"
+
+// Macros generated for backwards compatibility
+#ifndef rtmGetStopRequested
+#define rtmGetStopRequested(rtm)       ((void*) 0)
+#endif
+#endif                                 // RTW_HEADER_rtmodel_h_
 
 //
 // File trailer for generated code.

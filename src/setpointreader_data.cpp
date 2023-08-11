@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 1.45
-// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Jul 28 10:12:27 2021
+// Model version                  : 4.0
+// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
+// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -17,7 +17,6 @@
 // Validation result: Not run
 //
 #include "setpointreader.h"
-#include "setpointreader_private.h"
 
 // Block parameters (default storage)
 P_setpointreader_T setpointreader_P = {
@@ -56,10 +55,10 @@ P_setpointreader_T setpointreader_P = {
     0.0                                // Z
   },
 
-  // Expression: 0.27777
+  // Expression: 1.0
   //  Referenced by: '<Root>/Gain'
 
-  0.27777
+  1.0
 };
 
 //
