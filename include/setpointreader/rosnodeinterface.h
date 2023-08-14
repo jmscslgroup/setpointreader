@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.0
+// Model version                  : 4.2
 // Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Fri Aug 11 14:36:36 2023
+// C/C++ source code generated on : Mon Aug 14 11:33:10 2023
 //
 
 #ifndef _ROS_MATLAB_NODEINTERFACE_

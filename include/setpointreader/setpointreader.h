@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.0
+// Model version                  : 4.2
 // Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Fri Aug 11 14:36:26 2023
+// C/C++ source code generated on : Mon Aug 14 11:33:06 2023
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -57,7 +57,7 @@ struct P_setpointreader_T_ {
   SL_Bus_setpointreader_geometry_msgs_Point Constant_Value_j;// Computed Parameter: Constant_Value_j
                                                                 //  Referenced by: '<S3>/Constant'
 
-  real_T Gain_Gain;                    // Expression: 1.0
+  real_T Gain_Gain;                    // Expression: 10.0
                                           //  Referenced by: '<Root>/Gain'
 
 };
