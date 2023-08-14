@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.2
+// Model version                  : 4.3
 // Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 11:33:10 2023
+// C/C++ source code generated on : Mon Aug 14 12:03:25 2023
 //
 
 #ifdef _MSC_VER
