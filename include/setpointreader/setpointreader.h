@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.3
-// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 12:03:21 2023
+// Model version                  : 6.0
+// Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
+// C/C++ source code generated on : Tue Jan 28 11:52:32 2025
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -37,13 +37,14 @@
 // Block signals (default storage)
 struct B_setpointreader_T {
   SL_Bus_setpointreader_geometry_msgs_Twist BusAssignment;// '<Root>/Bus Assignment' 
-  SL_Bus_setpointreader_geometry_msgs_Point In1;// '<S4>/In1'
+  SL_Bus_setpointreader_geometry_msgs_Point In1;// '<S6>/In1'
 };
 
 // Block states (default storage) for system '<Root>'
 struct DW_setpointreader_T {
-  ros_slroscpp_internal_block_P_T obj; // '<S2>/SinkBlock'
-  ros_slroscpp_internal_block_S_T obj_g;// '<S3>/SourceBlock'
+  ros_slroscpp_internal_block_P_T obj; // '<S4>/SinkBlock'
+  ros_slroscpp_internal_block_P_T obj_h;// '<S3>/SinkBlock'
+  ros_slroscpp_internal_block_S_T obj_g;// '<S5>/SourceBlock'
 };
 
 // Parameters (default storage)
@@ -52,12 +53,15 @@ struct P_setpointreader_T_ {
                                                               //  Referenced by: '<S1>/Constant'
 
   SL_Bus_setpointreader_geometry_msgs_Point Out1_Y0;// Computed Parameter: Out1_Y0
-                                                       //  Referenced by: '<S4>/Out1'
+                                                       //  Referenced by: '<S6>/Out1'
 
   SL_Bus_setpointreader_geometry_msgs_Point Constant_Value_j;// Computed Parameter: Constant_Value_j
-                                                                //  Referenced by: '<S3>/Constant'
+                                                                //  Referenced by: '<S5>/Constant'
 
-  real_T Gain_Gain;                    // Expression: 1.0
+  SL_Bus_setpointreader_std_msgs_Float64 Constant_Value_d;// Computed Parameter: Constant_Value_d
+                                                             //  Referenced by: '<S2>/Constant'
+
+  real_T Gain_Gain;                    // Expression: 0.27777
                                           //  Referenced by: '<Root>/Gain'
 
 };
@@ -155,9 +159,11 @@ extern volatile boolean_T runModel;
 //
 //  '<Root>' : 'setpointreader'
 //  '<S1>'   : 'setpointreader/Blank Message'
-//  '<S2>'   : 'setpointreader/Publish'
-//  '<S3>'   : 'setpointreader/Subscribe1'
-//  '<S4>'   : 'setpointreader/Subscribe1/Enabled Subsystem'
+//  '<S2>'   : 'setpointreader/Blank Message2'
+//  '<S3>'   : 'setpointreader/Publish'
+//  '<S4>'   : 'setpointreader/Publish1'
+//  '<S5>'   : 'setpointreader/Subscribe1'
+//  '<S6>'   : 'setpointreader/Subscribe1/Enabled Subsystem'
 
 #endif                                 // RTW_HEADER_setpointreader_h_
 

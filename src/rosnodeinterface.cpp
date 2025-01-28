@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.3
-// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 12:03:25 2023
+// Model version                  : 6.0
+// Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
+// C/C++ source code generated on : Tue Jan 28 11:52:39 2025
 //
 
 #ifdef _MSC_VER
@@ -35,6 +35,12 @@
 #include <thread>
 #include <chrono>
 #include <utility>
+#ifndef RT_MEMORY_ALLOCATION_ERROR_DEF
+#define RT_MEMORY_ALLOCATION_ERROR_DEF
+
+const char *RT_MEMORY_ALLOCATION_ERROR = "memory allocation error";
+
+#endif
 
 namespace ros
 {
@@ -44,7 +50,7 @@ namespace ros
       : mNode()
       , mBaseRateSem()
       , mBaseRateThread()
-      , mSchedulerThread()
+      , mSchedulerTimer()
       , mStopSem()
       , mRunModel(true)
     {
@@ -69,9 +75,11 @@ namespace ros
         mBaseRateThread = std::make_shared<std::thread>(&NodeInterface::
           baseRateTask, this);
 
-        // create scheduler thread
-        mSchedulerThread = std::make_shared<std::thread>(&NodeInterface::
-          schedulerThread, this);
+        // create scheduler timer to run the scheduler callback
+        mSchedulerTimer = std::make_shared<ros::WallTimer>
+          (mNode->createWallTimer(ros::WallDuration(20000000*1e-9),
+            boost::bind(&NodeInterface::schedulerCallback, this, _1)));
+        mSchedulerTimer->start();
       } catch (std::exception& ex) {
         std::cout << ex.what() << std::endl;
         throw ex;
@@ -109,9 +117,9 @@ namespace ros
         mBaseRateThread->join();
         mRunModel = false;
         mBaseRateThread.reset();
-        if (mSchedulerThread.get()) {
-          mSchedulerThread->join();
-          mSchedulerThread.reset();
+        if (mSchedulerTimer.get()) {
+          mSchedulerTimer->stop();
+          mSchedulerTimer.reset();
         }
 
         setpointreader_terminate();
@@ -122,10 +130,9 @@ namespace ros
     //
     // Scheduler Task using ROS Wall clock timer to run base-rate
     //
-    void NodeInterface::schedulerThread(void)
+    void NodeInterface::schedulerCallback(const ros::WallTimerEvent& ev)
     {
-      while (mRunModel) {
-        std::this_thread::sleep_for(std::chrono::nanoseconds(20000000));
+      if (mRunModel) {
         mBaseRateSem.notify();
       }
     }
@@ -146,7 +153,8 @@ namespace ros
 
         if (!mRunModel)
           break;
-        setpointreader_step();
+        setpointreader_step(
+                            );
         mRunModel = !NodeInterface::getStopRequestedFlag();
       }
 

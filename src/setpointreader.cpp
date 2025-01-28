@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.3
-// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 12:03:21 2023
+// Model version                  : 6.0
+// Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
+// C/C++ source code generated on : Tue Jan 28 11:52:32 2025
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -34,86 +34,115 @@ RT_MODEL_setpointreader_T *const setpointreader_M = &setpointreader_M_;
 void setpointreader_step(void)
 {
   SL_Bus_setpointreader_geometry_msgs_Point b_varargout_2;
+  SL_Bus_setpointreader_std_msgs_Float64 rtb_BusAssignment1;
+  real_T rtb_Gain;
   boolean_T b_varargout_1;
-
-  // Outputs for Atomic SubSystem: '<Root>/Subscribe1'
-  // MATLABSystem: '<S3>/SourceBlock'
-  b_varargout_1 = Sub_setpointreader_31.getLatestMessage(&b_varargout_2);
-
-  // Outputs for Enabled SubSystem: '<S3>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S4>/Enable'
-
-  if (b_varargout_1) {
-    // SignalConversion generated from: '<S4>/In1'
-    setpointreader_B.In1 = b_varargout_2;
-  }
-
-  // End of MATLABSystem: '<S3>/SourceBlock'
-  // End of Outputs for SubSystem: '<S3>/Enabled Subsystem'
-  // End of Outputs for SubSystem: '<Root>/Subscribe1'
 
   // BusAssignment: '<Root>/Bus Assignment' incorporates:
   //   Constant: '<S1>/Constant'
-  //   Gain: '<Root>/Gain'
 
   setpointreader_B.BusAssignment = setpointreader_P.Constant_Value;
-  setpointreader_B.BusAssignment.Linear.X = setpointreader_P.Gain_Gain *
-    setpointreader_B.In1.Y;
+
+  // Outputs for Atomic SubSystem: '<Root>/Subscribe1'
+  // MATLABSystem: '<S5>/SourceBlock'
+  b_varargout_1 = Sub_setpointreader_31.getLatestMessage(&b_varargout_2);
+
+  // Outputs for Enabled SubSystem: '<S5>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S6>/Enable'
+
+  // Start for MATLABSystem: '<S5>/SourceBlock'
+  if (b_varargout_1) {
+    // SignalConversion generated from: '<S6>/In1'
+    setpointreader_B.In1 = b_varargout_2;
+  }
+
+  // End of Start for MATLABSystem: '<S5>/SourceBlock'
+  // End of Outputs for SubSystem: '<S5>/Enabled Subsystem'
+  // End of Outputs for SubSystem: '<Root>/Subscribe1'
+
+  // Gain: '<Root>/Gain'
+  rtb_Gain = setpointreader_P.Gain_Gain * setpointreader_B.In1.Y;
+
+  // BusAssignment: '<Root>/Bus Assignment'
+  setpointreader_B.BusAssignment.Linear.X = rtb_Gain;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish'
-  // MATLABSystem: '<S2>/SinkBlock'
+  // MATLABSystem: '<S3>/SinkBlock'
   Pub_setpointreader_3.publish(&setpointreader_B.BusAssignment);
 
   // End of Outputs for SubSystem: '<Root>/Publish'
+
+  // BusAssignment: '<Root>/Bus Assignment1'
+  rtb_BusAssignment1.Data = rtb_Gain;
+
+  // Outputs for Atomic SubSystem: '<Root>/Publish1'
+  // MATLABSystem: '<S4>/SinkBlock'
+  Pub_setpointreader_44.publish(&rtb_BusAssignment1);
+
+  // End of Outputs for SubSystem: '<Root>/Publish1'
 }
 
 // Model initialize function
 void setpointreader_initialize(void)
 {
   {
+    int32_T i;
+    char_T b_zeroDelimTopic_1[12];
     char_T b_zeroDelimTopic[8];
     char_T b_zeroDelimTopic_0[6];
-    static const char_T tmp[7] = { 'm', 's', 'g', '_', '4', '6', '7' };
-
-    static const char_T tmp_0[5] = { 'v', '_', 'r', 'e', 'f' };
+    static const char_T b_zeroDelimTopic_2[8] = "msg_467";
+    static const char_T b_zeroDelimTopic_3[6] = "v_ref";
+    static const char_T b_zeroDelimTopic_4[12] = "v_ref_float";
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe1'
-    // SystemInitialize for Enabled SubSystem: '<S3>/Enabled Subsystem'
-    // SystemInitialize for SignalConversion generated from: '<S4>/In1' incorporates:
-    //   Outport: '<S4>/Out1'
+    // SystemInitialize for Enabled SubSystem: '<S5>/Enabled Subsystem'
+    // SystemInitialize for SignalConversion generated from: '<S6>/In1' incorporates:
+    //   Outport: '<S6>/Out1'
 
     setpointreader_B.In1 = setpointreader_P.Out1_Y0;
 
-    // End of SystemInitialize for SubSystem: '<S3>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S5>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S3>/SourceBlock'
+    // Start for MATLABSystem: '<S5>/SourceBlock'
     setpointreader_DW.obj_g.matlabCodegenIsDeleted = false;
     setpointreader_DW.obj_g.isInitialized = 1;
-    for (int32_T i = 0; i < 7; i++) {
-      b_zeroDelimTopic[i] = tmp[i];
+    for (i = 0; i < 8; i++) {
+      b_zeroDelimTopic[i] = b_zeroDelimTopic_2[i];
     }
 
-    b_zeroDelimTopic[7] = '\x00';
     Sub_setpointreader_31.createSubscriber(&b_zeroDelimTopic[0], 1);
     setpointreader_DW.obj_g.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S3>/SourceBlock'
+    // End of Start for MATLABSystem: '<S5>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe1'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Publish'
-    // Start for MATLABSystem: '<S2>/SinkBlock'
-    setpointreader_DW.obj.matlabCodegenIsDeleted = false;
-    setpointreader_DW.obj.isInitialized = 1;
-    for (int32_T i = 0; i < 5; i++) {
-      b_zeroDelimTopic_0[i] = tmp_0[i];
+    // Start for MATLABSystem: '<S3>/SinkBlock'
+    setpointreader_DW.obj_h.matlabCodegenIsDeleted = false;
+    setpointreader_DW.obj_h.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      b_zeroDelimTopic_0[i] = b_zeroDelimTopic_3[i];
     }
 
-    b_zeroDelimTopic_0[5] = '\x00';
     Pub_setpointreader_3.createPublisher(&b_zeroDelimTopic_0[0], 1);
+    setpointreader_DW.obj_h.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S3>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<Root>/Publish'
+
+    // SystemInitialize for Atomic SubSystem: '<Root>/Publish1'
+    // Start for MATLABSystem: '<S4>/SinkBlock'
+    setpointreader_DW.obj.matlabCodegenIsDeleted = false;
+    setpointreader_DW.obj.isInitialized = 1;
+    for (i = 0; i < 12; i++) {
+      b_zeroDelimTopic_1[i] = b_zeroDelimTopic_4[i];
+    }
+
+    Pub_setpointreader_44.createPublisher(&b_zeroDelimTopic_1[0], 1);
     setpointreader_DW.obj.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S2>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<Root>/Publish'
+    // End of Start for MATLABSystem: '<S4>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<Root>/Publish1'
   }
 }
 
@@ -121,22 +150,31 @@ void setpointreader_initialize(void)
 void setpointreader_terminate(void)
 {
   // Terminate for Atomic SubSystem: '<Root>/Subscribe1'
-  // Terminate for MATLABSystem: '<S3>/SourceBlock'
+  // Terminate for MATLABSystem: '<S5>/SourceBlock'
   if (!setpointreader_DW.obj_g.matlabCodegenIsDeleted) {
     setpointreader_DW.obj_g.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S3>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S5>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe1'
 
   // Terminate for Atomic SubSystem: '<Root>/Publish'
-  // Terminate for MATLABSystem: '<S2>/SinkBlock'
+  // Terminate for MATLABSystem: '<S3>/SinkBlock'
+  if (!setpointreader_DW.obj_h.matlabCodegenIsDeleted) {
+    setpointreader_DW.obj_h.matlabCodegenIsDeleted = true;
+  }
+
+  // End of Terminate for MATLABSystem: '<S3>/SinkBlock'
+  // End of Terminate for SubSystem: '<Root>/Publish'
+
+  // Terminate for Atomic SubSystem: '<Root>/Publish1'
+  // Terminate for MATLABSystem: '<S4>/SinkBlock'
   if (!setpointreader_DW.obj.matlabCodegenIsDeleted) {
     setpointreader_DW.obj.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S2>/SinkBlock'
-  // End of Terminate for SubSystem: '<Root>/Publish'
+  // End of Terminate for MATLABSystem: '<S4>/SinkBlock'
+  // End of Terminate for SubSystem: '<Root>/Publish1'
 }
 
 //

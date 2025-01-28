@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.3
-// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 12:03:21 2023
+// Model version                  : 6.0
+// Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
+// C/C++ source code generated on : Tue Jan 28 11:52:32 2025
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -20,6 +20,8 @@
 #define RTW_HEADER_setpointreader_private_h_
 #include "rtwtypes.h"
 #include "setpointreader_types.h"
+#include "rtw_continuous.h"
+#include "rtw_solver.h"
 #endif                                 // RTW_HEADER_setpointreader_private_h_
 
 //

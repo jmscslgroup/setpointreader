@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'setpointreader'.
 //
-// Model version                  : 4.3
-// Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Mon Aug 14 12:03:21 2023
+// Model version                  : 6.0
+// Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
+// C/C++ source code generated on : Tue Jan 28 11:52:32 2025
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -43,6 +43,17 @@ struct SL_Bus_setpointreader_geometry_msgs_Twist
 
   // MsgType=geometry_msgs/Vector3
   SL_Bus_setpointreader_geometry_msgs_Vector3 Angular;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_setpointreader_std_msgs_Float64_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_setpointreader_std_msgs_Float64_
+
+// MsgType=std_msgs/Float64
+struct SL_Bus_setpointreader_std_msgs_Float64
+{
+  real_T Data;
 };
 
 #endif
